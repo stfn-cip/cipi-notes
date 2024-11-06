@@ -1,4 +1,4 @@
-# Notes App
+# Cipi Notes
 
 A modern, feature-rich notes application designed to help users organize their personal thoughts and ideas, practice real-time data management, and leverage AI-driven insights. Built with **Next.js**, **Supabase**, and **Stripe**, this project focuses on seamless user experience, data caching, and offers a subscription model for additional features. The project aims to combine efficient note management with cutting-edge technology to create a valuable tool for both personal and collaborative use.
 
