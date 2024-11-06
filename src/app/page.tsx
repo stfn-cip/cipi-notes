@@ -1,4 +1,5 @@
 import Note, { NoteTypes } from "@/features/notes/components/note";
+import AddNote from "@/features/notes/private-notes/components/addNote";
 
 const notes: NoteTypes[] = [
   {
@@ -47,10 +48,15 @@ const notes: NoteTypes[] = [
 
 export default function Home() {
   return (
-    <main className="grid grid-cols-[repeat(auto-fit,minmax(200px,_1fr))] justify-around justify-items-center gap-3 md:grid-cols-[repeat(auto-fit,minmax(300px,_1fr))]">
-      {notes.map((note) => (
-        <Note key={note.header} note={note} />
-      ))}
+    <main>
+      <div className="flex justify-end mb-3">
+        <AddNote />
+      </div>
+      <article className="grid grid-cols-[repeat(auto-fit,minmax(200px,_1fr))] justify-around justify-items-center gap-3 md:grid-cols-[repeat(auto-fit,minmax(300px,_1fr))]">
+        {notes.map((note) => (
+          <Note key={note.header} note={note} />
+        ))}
+      </article>
     </main>
   );
 }

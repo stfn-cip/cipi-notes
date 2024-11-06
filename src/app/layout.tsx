@@ -26,7 +26,7 @@ export default function RootLayout({
       <body className={`${poppins.className} antialiased`}>
         <SidebarProvider>
           <AppSidebar />
-          <SidebarTrigger className="m-4 ml-1 sticky top-4" />
+          <SidebarTrigger className="sticky top-4 m-4 mr-0 ml-1" />
           <div className="container mx-auto py-4 pr-4">{children}</div>
         </SidebarProvider>
       </body>

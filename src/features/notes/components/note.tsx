@@ -17,7 +17,7 @@ function Note({ note }: { note: NoteTypes }) {
 
   return (
     <Link href={link}>
-      <Card className="max-w-96 transition-colors hover:bg-muted">
+      <Card className="max-w-96 transition-colors lg:hover:bg-muted">
         <CardHeader>
           <CardTitle>{header}</CardTitle>
           <CardDescription className="line-clamp-3">{content}</CardDescription>
