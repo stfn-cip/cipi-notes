@@ -24,17 +24,17 @@ function AppSidebar() {
           <SidebarMenu>
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
-                <Link href="#">
-                  <Globe2 />
-                  <span>Global Notes</span>
+                <Link href="/">
+                  <NotepadText />
+                  <span>Personal Notes</span>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
-                <Link href="#">
-                  <NotepadText />
-                  <span>Private Notes</span>
+                <Link href="/notes-feed">
+                  <Globe2 />
+                  <span>Notes Feed</span>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
