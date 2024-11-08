@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import AppSidebar from "@/components/AppSidebar";
 
 const poppins = Poppins({
@@ -26,8 +26,7 @@ export default function RootLayout({
       <body className={`${poppins.className} antialiased`}>
         <SidebarProvider>
           <AppSidebar />
-          <SidebarTrigger className="sticky top-4 m-4 mr-0 ml-1" />
-          <div className="container mx-auto py-4 pr-4">{children}</div>
+          <div className="container mx-auto pb-4 pl-2 pr-4">{children}</div>
         </SidebarProvider>
       </body>
     </html>

@@ -1,5 +1,8 @@
-import Note, { PersonalNoteTypes } from "@/features/personal-notes/components/note";
-import AddNote from "@/features/personal-notes/components/addNote";
+import Note, {
+  PersonalNoteTypes,
+} from "@/features/notes/personal-notes/ui/Note";
+import AddNote from "@/features/notes/personal-notes/ui/AddNote";
+import Page, { PageGrid, PageHeader } from "@/features/notes/ui/Page";
 
 const notes: PersonalNoteTypes[] = [
   {
@@ -48,15 +51,16 @@ const notes: PersonalNoteTypes[] = [
 
 export default function Home() {
   return (
-    <main>
-      <div className="flex justify-end mb-3">
+    <Page>
+      <PageHeader>
         <AddNote />
-      </div>
-      <article className="grid grid-cols-[repeat(auto-fit,minmax(200px,_1fr))] justify-around justify-items-center gap-3 md:grid-cols-[repeat(auto-fit,minmax(300px,_1fr))]">
+      </PageHeader>
+
+      <PageGrid>
         {notes.map((note) => (
           <Note key={note.title} note={note} />
         ))}
-      </article>
-    </main>
+      </PageGrid>
+    </Page>
   );
 }
