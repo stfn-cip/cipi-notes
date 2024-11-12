@@ -5,8 +5,8 @@ import Page, { PageGrid, PageHeader } from "@/features/notes/ui/Page";
 import { createClient } from "@/lib/supabase/server";
 
 async function NotesFeed() {
-  const supabase = createClient();
-  const { data: notes } = await (await supabase).from("global-notes").select();
+  const supabase = await createClient();
+  const { data: notes } = await supabase.from("global-notes").select();
 
   return (
     <Page>
