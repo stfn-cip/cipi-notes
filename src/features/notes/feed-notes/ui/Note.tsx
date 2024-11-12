@@ -1,4 +1,4 @@
-import { intlFormatDistance, parseISO } from "date-fns";
+import { intlFormatDistance } from "date-fns";
 import NoteBase, {
   NoteDescription,
   NoteDetails,
@@ -8,24 +8,24 @@ import NoteBase, {
 } from "@/features/notes/ui/NoteBase";
 
 export type FeedNoteTypes = {
+  id: string;
   title: string;
   content: string;
-  link: string;
   color: string;
   author: string;
-  publishedDate: string;
+  created_at: string;
 };
 
 function FeedNote({ note }: { note: FeedNoteTypes }) {
-  const { title, content, link, color, author, publishedDate } = note;
-  const formatDate = parseISO(publishedDate);
-  const convertDate = intlFormatDistance(formatDate, Date.now(), {
+  const { title, content, color, author, created_at } = note;
+
+  const convertDate = intlFormatDistance(new Date(created_at), new Date(), {
     style: "short",
     locale: "en",
   });
 
   return (
-    <NoteBase href={link} style={{ borderColor: color }}>
+    <NoteBase href={"#"} style={{ borderColor: color }}>
       <NoteHeader>
         <NoteTitle>{title}</NoteTitle>
         <NoteDescription>{content}</NoteDescription>
