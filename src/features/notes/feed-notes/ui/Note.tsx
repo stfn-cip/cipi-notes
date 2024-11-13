@@ -25,7 +25,7 @@ function FeedNote({ note }: { note: FeedNoteTypes }) {
   });
 
   return (
-    <NoteBase href={"#"} style={{ borderColor: color }}>
+    <NoteBase style={{ borderColor: color }}>
       <NoteHeader>
         <NoteTitle>{title}</NoteTitle>
         <NoteDescription>{content}</NoteDescription>
