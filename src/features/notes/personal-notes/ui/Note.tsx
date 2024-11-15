@@ -8,24 +8,22 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
 import { Ellipsis } from "lucide-react";
 
 export type PersonalNoteTypes = {
+  id: string;
   title: string;
   content: string;
-  link: string;
 };
 
 function PersonalNote({ note }: { note: PersonalNoteTypes }) {
-  const { title, content, link } = note;
+  const { id, title, content } = note;
 
   return (
-    <NoteBase href={link}>
+    <NoteBase href={`/${id}`}>
       <div className="flex items-start gap-1 p-6">
         <NoteHeader className="p-0">
           <NoteTitle>{title}</NoteTitle>
@@ -38,9 +36,7 @@ function PersonalNote({ note }: { note: PersonalNoteTypes }) {
           </DropdownMenuTrigger>
           <DropdownMenuContent>
             <DropdownMenuItem>Edit</DropdownMenuItem>
-            <DropdownMenuItem className="text-red-500">
-              Delete
-            </DropdownMenuItem>
+            <DropdownMenuItem className="text-red-500">Delete</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
