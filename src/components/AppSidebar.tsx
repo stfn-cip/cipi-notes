@@ -71,8 +71,7 @@ async function UserBanner() {
     data: { user },
     error,
   } = await supabase.auth.getUser();
-  console.log(error);
-  //if (error) throw new Error();
+  if (error) throw new Error();
   if (!user) return <UserBannerSkeleton />;
 
   const name = GetUserName(user);

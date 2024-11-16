@@ -24,7 +24,7 @@ function PersonalNote({ note }: { note: PersonalNoteTypes }) {
 
   return (
     <NoteBase href={`/${id}`}>
-      <div className="flex items-start gap-1 p-6">
+      <div className="flex items-start justify-between gap-1 p-6">
         <NoteHeader className="p-0">
           <NoteTitle>{title}</NoteTitle>
           <NoteDescription>{content}</NoteDescription>

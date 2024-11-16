@@ -1,5 +1,5 @@
 import Note from "@/features/notes/personal-notes/ui/Note";
-import AddNote from "@/features/notes/personal-notes/ui/AddNote";
+import AddNote from "@/features/notes/personal-notes/add-notes/ui/AddNote";
 import Page, { PageGrid, PageHeader } from "@/features/notes/ui/Page";
 import { createClient } from "@/lib/supabase/server";
 import NoNotes from "@/features/notes/ui/NoNotes";
@@ -22,7 +22,10 @@ export default function Home() {
 
 const NotesGrid = async () => {
   const supabase = await createClient();
-  const { data: notes, error } = await supabase.from("private-notes").select();
+  const { data: notes, error } = await supabase
+    .from("private-notes")
+    .select()
+    .order("updated_at", { ascending: false });
 
   if (error) throw new Error();
 

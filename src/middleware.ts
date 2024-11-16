@@ -20,9 +20,6 @@ export async function middleware(request: NextRequest) {
   } = await supabase.auth.getUser();
   const isAuthRoute = authRoutes.includes(nextUrl.pathname);
   const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
-  console.log("isAuthRoute", isAuthRoute);
-  console.log("isPublicRoute", isPublicRoute);
-  console.log("isSignedIn", isSignedIn);
 
   if (isAuthRoute) {
     if (isSignedIn)
