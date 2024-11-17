@@ -54,7 +54,6 @@ function AddNotesForm({
       success: () => {
         revalidatePathClient("/");
         setOpen(false);
-        setLoading(false);
         return "Note added!";
       },
       error: () => {
