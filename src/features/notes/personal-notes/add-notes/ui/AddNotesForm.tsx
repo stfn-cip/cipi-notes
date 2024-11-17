@@ -19,7 +19,7 @@ import {
   revalidatePathClient,
 } from "@/features/notes/personal-notes/actions";
 import { toast } from "sonner";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
 export const insertFormSchema = z.object({
   title: z.string().min(1).max(30),
@@ -31,6 +31,8 @@ function AddNotesForm({
 }: {
   setOpen: Dispatch<SetStateAction<boolean>>;
 }) {
+  const [loading, setLoading] = useState(false);
+
   const form = useForm<z.infer<typeof insertFormSchema>>({
     resolver: zodResolver(insertFormSchema),
     defaultValues: {
@@ -40,6 +42,7 @@ function AddNotesForm({
   });
 
   const onSubmit = async (values: z.infer<typeof insertFormSchema>) => {
+    setLoading(true);
     const formData = new FormData();
     formData.append("title", values.title);
     formData.append("content", values.content);
@@ -51,9 +54,13 @@ function AddNotesForm({
       success: () => {
         revalidatePathClient("/");
         setOpen(false);
+        setLoading(false);
         return "Note added!";
       },
-      error: "Error",
+      error: () => {
+        setLoading(false);
+        return "Error";
+      },
     });
   };
 
@@ -68,7 +75,12 @@ function AddNotesForm({
               <FormItem>
                 <FormLabel>Title</FormLabel>
                 <FormControl>
-                  <Input className="text-base" placeholder="" {...field} />
+                  <Input
+                    disabled={loading}
+                    className="text-base"
+                    placeholder=""
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -83,6 +95,7 @@ function AddNotesForm({
                 <FormLabel>Content</FormLabel>
                 <FormControl>
                   <Textarea
+                    disabled={loading}
                     placeholder=""
                     className="h-60 resize-none"
                     {...field}
@@ -94,9 +107,13 @@ function AddNotesForm({
           />
         </div>
         <DrawerFooter className="flex flex-row justify-end gap-2 px-0 pt-3">
-          <Button type="submit">Upload</Button>
+          <Button disabled={loading} type="submit">
+            Upload
+          </Button>
           <DrawerClose asChild>
-            <Button variant="secondary">Cancel</Button>
+            <Button disabled={loading} variant="secondary">
+              Cancel
+            </Button>
           </DrawerClose>
         </DrawerFooter>
       </form>
