@@ -6,15 +6,7 @@ import NoteBase, {
   NoteHeader,
   NoteTitle,
 } from "@/features/notes/ui/NoteBase";
-
-export type FeedNoteTypes = {
-  id: string;
-  title: string;
-  content: string;
-  color: string;
-  author: string;
-  created_at: string;
-};
+import { FeedNoteTypes } from "../../types";
 
 function FeedNote({ note }: { note: FeedNoteTypes }) {
   const { title, content, color, author, created_at } = note;

@@ -1,22 +1,22 @@
-import Note from "@/features/notes/personal-notes/ui/Note";
-import AddNote from "@/features/notes/personal-notes/add-notes/ui/AddNote";
-import Page, { PageGrid, PageHeader } from "@/features/notes/ui/Page";
+import Note from "@/features/notes/personal-notes/ui/PersonalNote";
+import AddNoteSheet from "@/features/notes/personal-notes/add-notes/ui/AddNoteSheet";
+import NotesPage, { PageGrid, PageHeader } from "@/features/notes/ui/NotesPage";
 import { createClient } from "@/lib/supabase/server";
-import NoNotes from "@/features/notes/ui/NoNotes";
+import NoNotes from "@/features/notes/ui/NoNotesMessage";
 import { Suspense } from "react";
-import SkeletonGrid from "@/features/notes/ui/Skeleton";
+import NotesSkeletonGrid from "@/features/notes/ui/NotesSkeletonGrid";
 
 export default function Home() {
   return (
-    <Page>
+    <NotesPage>
       <PageHeader>
-        <AddNote />
+        <AddNoteSheet />
       </PageHeader>
 
-      <Suspense fallback={<SkeletonGrid />}>
+      <Suspense fallback={<NotesSkeletonGrid />}>
         <NotesGrid />
       </Suspense>
-    </Page>
+    </NotesPage>
   );
 }
 

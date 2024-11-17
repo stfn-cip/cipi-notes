@@ -15,9 +15,9 @@ import { Button } from "./ui/button";
 import { createClient } from "@/lib/supabase/server";
 import { Suspense } from "react";
 import UserBannerSkeleton from "./UserBannerSkeleton";
-import { GetUserName } from "@/lib/utils";
+import { GetUserName } from "@/utils/utils";
 import { redirect } from "next/navigation";
-import { DEFAULT_LOGIN } from "@/lib/routes";
+import { DEFAULT_LOGIN } from "@/utils/routes";
 
 function AppSidebar() {
   return (

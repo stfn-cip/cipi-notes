@@ -1,12 +1,12 @@
-import { PageGrid } from "@/features/notes/ui/Page";
+import { PageGrid } from "@/features/notes/ui/NotesPage";
 import NoteBase from "./NoteBase";
 
-function SkeletonGrid() {
+function NotesSkeletonGrid() {
   return (
     <PageGrid>
       {Array.from({ length: 9 }).map((_, id) => (
         <NoteBase
-          style={{animationDelay: `${id * 100}ms`}}
+          style={{ animationDelay: `${id * 100}ms` }}
           className="h-[156px] animate-pulse bg-primary/10"
           key={id}
         />
@@ -14,4 +14,4 @@ function SkeletonGrid() {
     </PageGrid>
   );
 }
-export default SkeletonGrid;
+export default NotesSkeletonGrid;

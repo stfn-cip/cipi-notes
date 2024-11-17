@@ -23,7 +23,11 @@ export const insertFormSchema = z.object({
   content: z.string().min(1).max(1000),
 });
 
-function Form({ setOpen }: { setOpen: Dispatch<SetStateAction<boolean>> }) {
+function AddNotesForm({
+  setOpen,
+}: {
+  setOpen: Dispatch<SetStateAction<boolean>>;
+}) {
   const form = useForm<z.infer<typeof insertFormSchema>>({
     resolver: zodResolver(insertFormSchema),
     defaultValues: {
@@ -95,4 +99,4 @@ function Form({ setOpen }: { setOpen: Dispatch<SetStateAction<boolean>> }) {
   );
 }
 
-export default Form;
+export default AddNotesForm;

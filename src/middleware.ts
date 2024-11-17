@@ -6,7 +6,7 @@ import {
   DEFAULT_LOGIN,
   DEFAULT_LOGIN_REDIRECT,
   publicRoutes,
-} from "./lib/routes";
+} from "./utils/routes";
 
 export async function middleware(request: NextRequest) {
   const { nextUrl } = request;

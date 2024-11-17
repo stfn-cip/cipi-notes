@@ -1,22 +1,22 @@
 import { Button } from "@/components/ui/button";
-import Note from "@/features/notes/feed-notes/ui/Note";
-import NoNotes from "@/features/notes/ui/NoNotes";
-import Page, { PageGrid, PageHeader } from "@/features/notes/ui/Page";
-import SkeletonGrid from "@/features/notes/ui/Skeleton";
+import Note from "@/features/notes/feed-notes/ui/FeedNote";
+import NoNotes from "@/features/notes/ui/NoNotesMessage";
+import NotesPage, { PageGrid, PageHeader } from "@/features/notes/ui/NotesPage";
+import NotesSkeletonGrid from "@/features/notes/ui/NotesSkeletonGrid";
 import { createClient } from "@/lib/supabase/server";
 import { Suspense } from "react";
 
 async function NotesFeed() {
   return (
-    <Page>
+    <NotesPage>
       <PageHeader>
         <Button>Publish a note</Button>
       </PageHeader>
 
-      <Suspense fallback={<SkeletonGrid />}>
+      <Suspense fallback={<NotesSkeletonGrid />}>
         <NotesGrid />
       </Suspense>
-    </Page>
+    </NotesPage>
   );
 }
 export default NotesFeed;

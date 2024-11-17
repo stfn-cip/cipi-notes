@@ -6,7 +6,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ReusableTypes } from "@/lib/types";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/utils";
 import Link, { LinkProps } from "next/link";
 import { ComponentPropsWithoutRef, ReactNode } from "react";
 

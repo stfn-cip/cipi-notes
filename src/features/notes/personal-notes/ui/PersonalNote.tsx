@@ -3,21 +3,14 @@ import NoteBase, {
   NoteHeader,
   NoteTitle,
 } from "@/features/notes/ui/NoteBase";
-
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-
 import { Ellipsis } from "lucide-react";
-
-export type PersonalNoteTypes = {
-  id: string;
-  title: string;
-  content: string;
-};
+import { PersonalNoteTypes } from "../../types";
 
 function PersonalNote({ note }: { note: PersonalNoteTypes }) {
   const { id, title, content } = note;
@@ -29,18 +22,24 @@ function PersonalNote({ note }: { note: PersonalNoteTypes }) {
           <NoteTitle>{title}</NoteTitle>
           <NoteDescription>{content}</NoteDescription>
         </NoteHeader>
-
-        <DropdownMenu>
-          <DropdownMenuTrigger>
-            <Ellipsis />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuItem>Edit</DropdownMenuItem>
-            <DropdownMenuItem className="text-red-500">Delete</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        
+        <Dropdown />
       </div>
     </NoteBase>
   );
 }
 export default PersonalNote;
+
+const Dropdown = () => {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger>
+        <Ellipsis />
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuItem>Edit</DropdownMenuItem>
+        <DropdownMenuItem className="text-red-500">Delete</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+};

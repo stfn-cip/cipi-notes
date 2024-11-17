@@ -7,10 +7,10 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-import Form from "@/features/notes/personal-notes/add-notes/ui/AddNotesForm";
+import AddNotesForm from "@/features/notes/personal-notes/add-notes/ui/AddNotesForm";
 import { useState } from "react";
 
-function AddNote() {
+function AddNoteSheet() {
   const [open, setOpen] = useState(false);
 
   return (
@@ -30,11 +30,11 @@ function AddNote() {
             <DrawerHeader className="mb-3 px-0">
               <DrawerTitle className="text-xl">Add a new note</DrawerTitle>
             </DrawerHeader>
-            <Form setOpen={setOpen} />
+            <AddNotesForm setOpen={setOpen} />
           </div>
         </div>
       </DrawerContent>
     </Drawer>
   );
 }
-export default AddNote;
+export default AddNoteSheet;
