@@ -23,7 +23,7 @@ export default function Home() {
 const NotesGrid = async () => {
   const supabase = await createClient();
   const { data: notes, error } = await supabase
-    .from("private-notes")
+    .from("private_notes")
     .select()
     .order("updated_at", { ascending: false });
 

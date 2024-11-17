@@ -27,7 +27,7 @@ function AddNotesForm({
   setOpen,
 }: {
   setOpen: Dispatch<SetStateAction<boolean>>;
-}) {
+  }) {
   const form = useForm<z.infer<typeof insertFormSchema>>({
     resolver: zodResolver(insertFormSchema),
     defaultValues: {
@@ -41,15 +41,14 @@ function AddNotesForm({
     formData.append("title", values.title);
     formData.append("content", values.content);
 
-    try {
-      const error = await insertNote(formData);
-      if (error) throw new Error();
-
-      setOpen(false);
-      toast("Note uploaded!");
-    } catch (error) {
+    const error = await insertNote(formData);
+    if (error) {
       toast("An error occured!");
+      return;
     }
+
+    setOpen(false);
+    toast("Note uploaded!");
   };
 
   return (

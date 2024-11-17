@@ -24,7 +24,7 @@ export default NotesFeed;
 const NotesGrid = async () => {
   const supabase = await createClient();
   const { data: notes, error } = await supabase
-    .from("global-notes")
+    .from("global_notes")
     .select()
     .order("created_at", { ascending: false });
 

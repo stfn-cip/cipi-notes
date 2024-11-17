@@ -12,10 +12,17 @@ export const insertNote = async (formData: FormData) => {
     data: { user },
   } = await supabase.auth.getUser();
   const { error } = await supabase
-    .from("private-notes")
+    .from("private_notes")
     .insert({ title, content, user_id: user?.id });
 
   revalidatePath("/");
   return error;
 };
 
+export const deleteNote = async (id: string) => {
+  const supabase = await createClient();
+  const { error } = await supabase.from("private_notes").delete().eq("id", id);
+
+  revalidatePath("/");
+  return error;
+};
