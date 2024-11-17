@@ -14,7 +14,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { insertNote } from "@/features/notes/personal-notes/actions";
+import {
+  insertNote,
+  revalidatePathClient,
+} from "@/features/notes/personal-notes/actions";
 import { toast } from "sonner";
 import { Dispatch, SetStateAction } from "react";
 
@@ -27,7 +30,7 @@ function AddNotesForm({
   setOpen,
 }: {
   setOpen: Dispatch<SetStateAction<boolean>>;
-  }) {
+}) {
   const form = useForm<z.infer<typeof insertFormSchema>>({
     resolver: zodResolver(insertFormSchema),
     defaultValues: {
@@ -41,14 +44,17 @@ function AddNotesForm({
     formData.append("title", values.title);
     formData.append("content", values.content);
 
-    const error = await insertNote(formData);
-    if (error) {
-      toast("An error occured!");
-      return;
-    }
+    const promise = insertNote(formData);
 
-    setOpen(false);
-    toast("Note uploaded!");
+    toast.promise(promise, {
+      loading: "Loading...",
+      success: () => {
+        revalidatePathClient("/");
+        setOpen(false);
+        return "Note added!";
+      },
+      error: "Error",
+    });
   };
 
   return (
