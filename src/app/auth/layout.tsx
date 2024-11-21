@@ -1,8 +1,14 @@
+import { Card } from "@/components/ui/card";
+
 function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <div className="container mx-auto pb-4 pl-2 pr-2">{children}</div>;
+  return (
+    <main className="container mx-auto flex min-h-screen items-center justify-center">
+      <Card className="w-[344px] space-y-3 gap-10">{children}</Card>
+    </main>
+  );
 }
 export default RootLayout;
