@@ -30,7 +30,7 @@ const PersonalNoteDropdown = ({ id }: { id: string }) => {
         <Ellipsis />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuItem>Edit</DropdownMenuItem>
+        <DropdownMenuItem disabled>Edit</DropdownMenuItem>
         <DropdownMenuItem
           onClick={onDelete}
           className="text-red-500 focus:text-red-400"

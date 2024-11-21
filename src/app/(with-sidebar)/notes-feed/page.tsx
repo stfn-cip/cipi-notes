@@ -10,7 +10,7 @@ async function NotesFeed() {
   return (
     <NotesPage>
       <PageHeader>
-        <Button>Publish a note</Button>
+        <Button disabled>Publish a note</Button>
       </PageHeader>
 
       <Suspense fallback={<NotesSkeletonGrid />}>

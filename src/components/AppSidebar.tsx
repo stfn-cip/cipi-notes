@@ -8,7 +8,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
 import { Globe2, Settings2, NotepadText, Notebook, LogOut } from "lucide-react";
 import { Button } from "./ui/button";
@@ -45,7 +44,7 @@ function AppSidebar() {
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
-              <SidebarMenuButton asChild>
+              <SidebarMenuButton aria-disabled tabIndex={-1} asChild>
                 <Link href="#">
                   <Settings2 />
                   <span>Settings</span>
@@ -74,15 +73,15 @@ async function UserBanner() {
   if (error) throw new Error();
   if (!user) return <UserBannerSkeleton />;
 
-  const name = CombineUserName(user);
+  const name = user ? CombineUserName(user) : "";
 
   return (
-    <SidebarFooter className="w-full flex-row items-center justify-between">
+    <SidebarFooter className="w-full flex-row items-center justify-between pl-3">
       <div className="flex items-center gap-2 overflow-hidden">
-        <Avatar className="size-10">
+        {/* <Avatar className="size-10">
           <AvatarImage src="/favicon.ico" />
           <AvatarFallback>CS</AvatarFallback>
-        </Avatar>
+        </Avatar> */}
         <div className="flex flex-col overflow-hidden leading-none">
           <h4 className="text-md overflow-hidden text-ellipsis whitespace-nowrap">
             {name}
