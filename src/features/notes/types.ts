@@ -3,7 +3,7 @@ export type FeedNoteTypes = {
   title: string;
   content: string;
   color: string;
-  author: string;
+  user_id: string;
   created_at: string;
 };
 

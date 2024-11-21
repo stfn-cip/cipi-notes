@@ -15,7 +15,7 @@ import { Button } from "./ui/button";
 import { createClient } from "@/lib/supabase/server";
 import { Suspense } from "react";
 import UserBannerSkeleton from "./UserBannerSkeleton";
-import { GetUserName } from "@/utils/utils";
+import { CombineUserName } from "@/utils/utils";
 import { redirect } from "next/navigation";
 import { DEFAULT_LOGIN } from "@/utils/routes";
 
@@ -74,7 +74,7 @@ async function UserBanner() {
   if (error) throw new Error();
   if (!user) return <UserBannerSkeleton />;
 
-  const name = GetUserName(user);
+  const name = CombineUserName(user);
 
   return (
     <SidebarFooter className="w-full flex-row items-center justify-between">
