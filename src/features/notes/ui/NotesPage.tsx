@@ -1,9 +1,9 @@
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { ReusableTypes } from "@/lib/types";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/utils";
 import { ComponentPropsWithoutRef } from "react";
 
-function Page({
+function NotesPage({
   children,
   className,
   ...props
@@ -24,7 +24,7 @@ const PageHeader = ({
     <div
       {...props}
       className={cn(
-        "sticky top-0 mb-3 flex justify-between pt-4 pb-2 backdrop-blur-sm",
+        "sticky top-0 mb-3 flex justify-between pb-2 pt-4 backdrop-blur-sm",
         className,
       )}
     >
@@ -53,4 +53,4 @@ const PageGrid = ({
 };
 
 export { PageHeader, PageGrid };
-export default Page;
+export default NotesPage;

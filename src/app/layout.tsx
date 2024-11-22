@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import { SidebarProvider } from "@/components/ui/sidebar";
-import AppSidebar from "@/components/AppSidebar";
+import { Toaster } from "@/components/ui/sonner";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -22,12 +21,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html className="[scrollbar-gutter:stable]" lang="en">
       <body className={`${poppins.className} antialiased`}>
-        <SidebarProvider>
-          <AppSidebar />
-          <div className="container mx-auto pb-4 pl-2 pr-4">{children}</div>
-        </SidebarProvider>
+        {children}
+        <Toaster />
       </body>
     </html>
   );

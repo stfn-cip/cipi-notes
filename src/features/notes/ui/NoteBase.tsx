@@ -6,30 +6,44 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ReusableTypes } from "@/lib/types";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/utils";
 import Link, { LinkProps } from "next/link";
-import { ComponentPropsWithoutRef } from "react";
+import { ComponentPropsWithoutRef, ReactNode } from "react";
 
-function NoteBase({
-  className,
-  href,
-  ...props
-}: ReusableTypes &
-  Required<Pick<LinkProps, "href">> &
-  ComponentPropsWithoutRef<"div">) {
-  return (
-    <Link href={href} className="max-w-96">
-      <Card
-        {...props}
-        className={cn(
-          "flex h-full w-full flex-col justify-between transition-colors lg:hover:bg-muted",
-          className,
-        )}
-      />
-    </Link>
+type BaseTypes = ReusableTypes &
+  ComponentPropsWithoutRef<"div"> &
+  Partial<Pick<LinkProps, "href">>;
+
+function NoteBase({ href, ...props }: BaseTypes) {
+  return href ? (
+    <NoteLink href={href}>
+      <NoteCard {...props} className="transition-colors lg:hover:bg-muted" />
+    </NoteLink>
+  ) : (
+    <NoteCard {...props} />
   );
 }
 
+const NoteCard = ({
+  className,
+  ...props
+}: ReusableTypes & ComponentPropsWithoutRef<"div">) => {
+  return (
+    <Card
+      {...props}
+      className={cn(
+        "flex h-full w-full max-w-96 flex-col justify-between",
+        className,
+      )}
+    />
+  );
+};
+
+const NoteLink = ({ href, ...props }: LinkProps & { children: ReactNode }) => {
+  return <Link {...props} href={href} className="max-w-96" />;
+};
+
+//note elements
 const NoteHeader = ({
   className,
   ...props
