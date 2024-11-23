@@ -1,4 +1,4 @@
-import AppSidebar from "@/components/AppSidebar";
+import Sidebar from "@/features/sidebar/ui/Sidebar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 
 function RootLayout({
@@ -8,7 +8,7 @@ function RootLayout({
 }>) {
   return (
     <SidebarProvider>
-      <AppSidebar />
+      <Sidebar />
       <div className="container mx-auto pb-4 pl-2 pr-2">{children}</div>
     </SidebarProvider>
   );
