@@ -1,5 +1,5 @@
 import {
-  Sidebar,
+  Sidebar as SidebarWrapper,
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
@@ -9,18 +9,16 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
-import { Globe2, Settings2, NotepadText, Notebook, LogOut } from "lucide-react";
-import { Button } from "./ui/button";
+import { Globe2, Settings2, NotepadText, Notebook } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { Suspense } from "react";
 import UserBannerSkeleton from "./UserBannerSkeleton";
 import { CombineUserName } from "@/utils/utils";
-import { redirect } from "next/navigation";
-import { DEFAULT_LOGIN } from "@/utils/routes";
+import { SidebarSignOut } from "./SidebarSignOut";
 
-function AppSidebar() {
+function Sidebar() {
   return (
-    <Sidebar variant="floating">
+    <SidebarWrapper variant="floating">
       <SidebarHeader className="flex flex-row items-center gap-1">
         <Notebook /> <h3 className="text-xl font-semibold">Cipi Notes</h3>
       </SidebarHeader>
@@ -58,10 +56,10 @@ function AppSidebar() {
       <Suspense fallback={<UserBannerSkeleton />}>
         <UserBanner />
       </Suspense>
-    </Sidebar>
+    </SidebarWrapper>
   );
 }
-export default AppSidebar;
+export default Sidebar;
 
 async function UserBanner() {
   const supabase = await createClient();
@@ -91,30 +89,7 @@ async function UserBanner() {
           </p>
         </div>
       </div>
-      <SignOut />
+      <SidebarSignOut />
     </SidebarFooter>
   );
 }
-
-export const SignOut = () => {
-  const HandleLogOut = async () => {
-    "use server";
-    const supabase = await createClient();
-    const { error } = await supabase.auth.signOut({ scope: "local" });
-    if (error) throw new Error();
-
-    redirect(DEFAULT_LOGIN);
-  };
-
-  return (
-    <form action={HandleLogOut}>
-      <Button
-        type="submit"
-        variant="ghost"
-        className="rounded-full p-2 text-red-500 hover:text-red-400"
-      >
-        <LogOut size={20} />
-      </Button>
-    </form>
-  );
-};
