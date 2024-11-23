@@ -18,6 +18,7 @@ import { LoaderCircle } from "lucide-react";
 import { formStateTypes, signInSchema } from "@/features/auth/types";
 import { toast } from "sonner";
 import { z } from "zod";
+import { useEffect } from "react";
 
 const initialState: formStateTypes<z.infer<typeof signInSchema>> = {
   message: "",
@@ -47,7 +48,9 @@ const FormContent = ({
 }) => {
   const { pending } = useFormStatus();
 
-  if ("message" in state && state.message) toast.error(state.message);
+  useEffect(() => {
+    if ("message" in state && state.message) toast.error(state.message);
+  }, [state]);
 
   return (
     <>
