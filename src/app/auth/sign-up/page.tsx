@@ -8,10 +8,10 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { signup } from "@/features/auth/actions";
+import { signUp } from "@/features/auth/sign-up/actions";
 import Link from "next/link";
 
-export default function LoginPage() {
+export default function SignUpPage() {
   return (
     <>
       <CardHeader>
@@ -41,11 +41,11 @@ export default function LoginPage() {
             <Input id="password" name="password" type="password" required />
           </div>
         </CardContent>
-        <CardFooter className="justify-center flex-col gap-3">
-          <Button className="rounded-full px-7" formAction={signup}>
+        <CardFooter className="flex-col justify-center gap-3">
+          <Button className="rounded-full px-7" formAction={signUp}>
             Sign up
           </Button>
-          <CardDescription className="hover:text-accent-foreground/50 transition-colors">
+          <CardDescription className="transition-colors hover:text-accent-foreground/50">
             <Link href="/auth/sign-in">Already have an account?</Link>
           </CardDescription>
         </CardFooter>
