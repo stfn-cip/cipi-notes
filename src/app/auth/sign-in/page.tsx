@@ -20,7 +20,8 @@ import { toast } from "sonner";
 import { z } from "zod";
 import { useEffect } from "react";
 
-const initialState: formStateTypes<z.infer<typeof signInSchema>> = {
+type stateTypes = formStateTypes<z.infer<typeof signInSchema>>;
+const initialState: stateTypes = {
   message: "",
 };
 
@@ -44,7 +45,7 @@ export default function SignInPage() {
 const FormContent = ({
   state,
 }: {
-  state: formStateTypes<z.infer<typeof signInSchema>>;
+  state: stateTypes;
 }) => {
   const { pending } = useFormStatus();
 

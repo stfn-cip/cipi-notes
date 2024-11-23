@@ -27,7 +27,7 @@ export async function signIn(
     if (error) return { message: error.message };
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (e) {
-    return { message: "Failed to log in" };
+    return { message: "Failed to sign in" };
   }
 
   revalidatePath("/", "layout");
