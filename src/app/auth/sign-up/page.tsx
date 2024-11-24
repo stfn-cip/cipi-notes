@@ -53,7 +53,7 @@ const FormContent = ({ state }: { state: stateTypes }) => {
       <CardContent className="space-y-3">
         <div>
           <Label htmlFor="first-name">First Name:</Label>
-          <Input id="first-name" name="first-name" type="text" required />
+          <Input disabled={pending} className="text-base" id="first-name" name="first-name" type="text" required />
           <p
             aria-live="polite"
             className="mt-1 text-sm text-red-500"
@@ -65,7 +65,14 @@ const FormContent = ({ state }: { state: stateTypes }) => {
 
         <div>
           <Label htmlFor="last-name">Last Name:</Label>
-          <Input id="last-name" name="last-name" type="text" required />
+          <Input
+            disabled={pending}
+            className="text-base"
+            id="last-name"
+            name="last-name"
+            type="text"
+            required
+          />
           <p
             aria-live="polite"
             className="mt-1 text-sm text-red-500"
@@ -77,7 +84,14 @@ const FormContent = ({ state }: { state: stateTypes }) => {
 
         <div>
           <Label htmlFor="email">Email:</Label>
-          <Input id="email" name="email" type="email" required />
+          <Input
+            disabled={pending}
+            className="text-base"
+            id="email"
+            name="email"
+            type="email"
+            required
+          />
           <p
             aria-live="polite"
             className="mt-1 text-sm text-red-500"
@@ -89,7 +103,14 @@ const FormContent = ({ state }: { state: stateTypes }) => {
 
         <div>
           <Label htmlFor="password">Password:</Label>
-          <Input id="password" name="password" type="password" required />
+          <Input
+            disabled={pending}
+            className="text-base"
+            id="password"
+            name="password"
+            type="password"
+            required
+          />
           <p
             aria-live="polite"
             className="mt-1 text-sm text-red-500"
