@@ -60,6 +60,7 @@ const FormContent = ({
           <Label htmlFor="email">Email:</Label>
           <Input
             disabled={pending}
+            className="text-base"
             id="email"
             name="email"
             type="email"
@@ -78,6 +79,7 @@ const FormContent = ({
           <Label htmlFor="password">Password:</Label>
           <Input
             disabled={pending}
+            className="text-base"
             id="password"
             name="password"
             type="password"
