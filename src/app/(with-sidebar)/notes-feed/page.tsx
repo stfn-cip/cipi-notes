@@ -1,4 +1,7 @@
 import { Button } from "@/components/ui/button";
+import {
+  generateFeedNoteAI,
+} from "@/features/notes/feed-notes/actions";
 import Note from "@/features/notes/feed-notes/ui/FeedNote";
 import NoNotes from "@/features/notes/ui/NoNotesMessage";
 import NotesPage, { PageGrid, PageHeader } from "@/features/notes/ui/NotesPage";
@@ -10,7 +13,12 @@ async function NotesFeed() {
   return (
     <NotesPage>
       <PageHeader>
-        <Button disabled>Publish a note</Button>
+        <form className="space-x-2">
+          <Button formAction={generateFeedNoteAI} variant={"secondary"}>
+            Generate with AI
+          </Button>
+          <Button>Publish a note</Button>
+        </form>
       </PageHeader>
 
       <Suspense fallback={<NotesSkeletonGrid />}>
